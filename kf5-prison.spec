@@ -1,15 +1,15 @@
-%define		kdeframever	5.59
+%define		kdeframever	5.62
 %define		qtver		5.9.0
 %define		kfname		prison
 
 Summary:	A barcode abstraction layer
 Name:		kf5-%{kfname}
-Version:	5.59.0
+Version:	5.62.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	e6aa01e4a900a843391a79e557b874f3
+# Source0-md5:	cc3150002229c212a1a2cc03bd31af4d
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
@@ -75,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-/etc/xdg/prison.categories
+%{_datadir}/qlogging-categories5/prison.categories
 %ghost %{_libdir}/libKF5Prison.so.5
 %{_libdir}/libKF5Prison.so.5.*.*
 %{_libdir}/qt5/qml/org/kde/prison
