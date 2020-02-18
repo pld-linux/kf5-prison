@@ -18,7 +18,7 @@ BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	hspell-devel
 BuildRequires:	hunspell-devel
-BuildRequires:	kf5-extra-cmake-modules >= 1.4.0
+BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	libdmtx-devel
 BuildRequires:	ninja
 BuildRequires:	qrencode-devel
