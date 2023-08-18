@@ -1,25 +1,25 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.108
+%define		kdeframever	5.109
 %define		qtver		5.15.2
 %define		kfname		prison
 
 Summary:	A barcode abstraction layer
 Name:		kf5-%{kfname}
-Version:	5.108.0
+Version:	5.109.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	ad9c21bd6097434ab417611113367c77
+# Source0-md5:	00d1282f4dd770085cf2d72371cd3388
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
 BuildRequires:	Qt5Multimedia-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
 BuildRequires:	Qt5Widgets-devel >= %{qtver}
-BuildRequires:	cmake >= 2.8.12
+BuildRequires:	cmake >= 3.16
 BuildRequires:	hspell-devel
 BuildRequires:	hunspell-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
@@ -61,16 +61,15 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 %setup -q -n %{kfname}-%{version}
 
 %build
-install -d build
-cd build
-%cmake -G Ninja \
+%cmake -B build \
+	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	../
-%ninja_build
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
+%ninja_build -C build
 
 %if %{with tests}
-ctest
+%ninja_build -C build test
 %endif
 
 
