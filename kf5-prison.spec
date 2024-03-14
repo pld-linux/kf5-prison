@@ -1,24 +1,24 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.249.0
+%define		kdeframever	5.114
 %define		qtver		5.15.2
 %define		kfname		prison
 
 Summary:	A barcode abstraction layer
 Name:		kf5-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	5.114.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	a0f8a4100bf3f320b42741b75abe4954
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	9c9f9255bbedc22ce86d538e7128deac
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= %{qtver}
-BuildRequires:	Qt6Multimedia-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= %{qtver}
-BuildRequires:	Qt6Widgets-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
+BuildRequires:	Qt5Multimedia-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= %{qtver}
+BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	hspell-devel
 BuildRequires:	hunspell-devel
@@ -34,7 +34,7 @@ BuildRequires:	zxing-cpp-nu-devel >= 1.2.0
 Requires:	kf5-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
+%define		qt5dir		%{_libdir}/qt5
 
 %description
 Prison has a Prison::AbstractBarcode, which is the base class for the
@@ -85,18 +85,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_datadir}/qlogging-categories6/prison.categories
-%ghost %{_libdir}/libKF6Prison.so.6
-%{_libdir}/libKF6Prison.so.5.*.*
-%ghost %{_libdir}/libKF6PrisonScanner.so.6
-%{_libdir}/libKF6PrisonScanner.so.5.*.*
-%{_libdir}/qt6/qml/org/kde/prison
-%{_datadir}/qlogging-categories6/prison.renamecategories
+%{_datadir}/qlogging-categories5/prison.categories
+%ghost %{_libdir}/libKF5Prison.so.5
+%{_libdir}/libKF5Prison.so.5.*.*
+%ghost %{_libdir}/libKF5PrisonScanner.so.5
+%{_libdir}/libKF5PrisonScanner.so.5.*.*
+%{_libdir}/qt5/qml/org/kde/prison
+%{_datadir}/qlogging-categories5/prison.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF6/Prison
-%{_libdir}/cmake/KF6Prison
-%{_libdir}/libKF6Prison.so
-%{_includedir}/KF6/PrisonScanner
-%{_libdir}/libKF6PrisonScanner.so
+%{_includedir}/KF5/Prison
+%{_libdir}/cmake/KF5Prison
+%{_libdir}/qt5/mkspecs/modules/qt_Prison.pri
+%{_libdir}/libKF5Prison.so
+%{_includedir}/KF5/PrisonScanner
+%{_libdir}/libKF5PrisonScanner.so
