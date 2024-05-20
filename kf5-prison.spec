@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.115
+%define		kdeframever	5.116
 %define		qtver		5.15.2
 %define		kfname		prison
 
 Summary:	A barcode abstraction layer
 Name:		kf5-%{kfname}
-Version:	5.115.0
+Version:	5.116.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	abf08dfa6dd1d274e7834964e5cd23c5
+# Source0-md5:	a65d26234fa57ad6ba40b42e31911df5
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
